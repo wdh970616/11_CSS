@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: grid;
+        }
+
+        .intro {
+            background: wheat;
+            min-width: 100vw;
+            min-height: 100vh;
+            place-content: center;
+        }
+
+        .sentence {
+            font-family: "Asap", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 80px;
+            font-weight: 650;
+            font-style: normal;
+            overflow: visible;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .letter {
+            opacity: 0;
+            transform: translateY(-0.25em);
+            display: inline-block;
+            animation: burst_in 3s cubic-bezier(0, 1.62, 1, 1.6);
+        }
+
+        @keyframes burst_in {
+
+            25%,
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @for $i from 1 through 17 {
+            .sentence-3 .letter:nth-of-type(#{$i}) {
+                animation-delay: ($i * $i * 0.0035s);
+            }
+        }
+
+        .sentence .letter:nth-of-type(1) {
+            animation-delay: 0.05s;
+        }
+
+        .sentence .letter:nth-of-type(2) {
+            animation-delay: 0.1s;
+        }
+
+        .sentence .letter:nth-of-type(3) {
+            animation-delay: 0.15s;
+        }
+
+        .sentence .letter:nth-of-type(4) {
+            animation-delay: 0.2s;
+        }
+
+        .sentence .letter:nth-of-type(5) {
+            animation-delay: 0.25s;
+        }
+
+        .sentence .letter:nth-of-type(6) {
+            animation-delay: 0.3s;
+        }
+
+        .sentence .letter:nth-of-type(7) {
+            animation-delay: 0.35s;
+        }
+
+        .sentence .letter:nth-of-type(8) {
+            animation-delay: 0.7s;
+        }
+
+        .sentence .letter:nth-of-type(9) {
+            animation-delay: 0.7s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="intro">
+        <div class="sentence">
+            <span class="letter">W</span>
+            <span class="letter">E</span>
+            <span class="letter">L</span>
+            <span class="letter">C</span>
+            <span class="letter">O</span>
+            <span class="letter">M</span>
+            <span class="letter">E</span>
+            <span class="letter">T</span>
+            <span class="letter">O</span>
+            <span class="letter">S</span>
+            <span class="letter">E</span>
+            <span class="letter">O</span>
+            <span class="letter">N</span>
+            <span class="letter">G</span>
+            <span class="letter">M</span>
+            <span class="letter">I</span>
+            <span class="letter">N</span>
+        </div>
+    </div>
+
+</body>
+
+</html>
