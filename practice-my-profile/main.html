@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SeongminPage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap"
@@ -23,24 +23,14 @@
             min-height: 100vh;
             place-content: center;
             position: fixed;
+            display: flex;
 
             animation-name: page-out;
             animation-duration: 2.5s;
             animation-delay: 3.5s;
             animation-timing-function: ease;
-        }
-
-        .main {
-            background-color: aliceblue;
-            min-width: 100vw;
-            min-height: 100vh;
-            place-content: center;
-            position: fixed;
-
-            animation-name: page-in;
-            animation-duration: 2.5s;
-            animation-delay: 6s;
-            animation-timing-function: ease;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
         }
 
         .sentence {
@@ -49,13 +39,13 @@
             font-size: 80px;
             font-weight: 650;
             font-style: normal;
-            overflow: visible;
             text-align: center;
 
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            white-space: nowrap;
         }
 
         .letter {
@@ -65,9 +55,64 @@
             animation: burst_in 3s cubic-bezier(0, 1.62, 1, 1.6);
         }
 
+        .page {
+            background-color: aliceblue;
+            min-width: 100vw;
+            min-height: 100vh;
+            position: fixed;
+            opacity: 0;
+
+            animation-name: page-in;
+            animation-duration: 2s;
+            animation-delay: 3.9s;
+            animation-timing-function: ease;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        .objects {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+
+            opacity: 0;
+            animation-name: fade_in;
+            animation-duration: 1s;
+            animation-delay: 6s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+        }
+
+        .btn {
+            background-color: dimgray;
+            border-radius: 30px;
+            border: none;
+            color: whitesmoke;
+
+            cursor: pointer;
+
+            font-family: "Asap", sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            margin-bottom: 20px;
+            padding: 17px 30px;
+            width: 146px;
+        }
+
         @keyframes page-out {
+            0% {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+
             10% {
                 transform: scale(1, 0.002);
+                opacity: 1;
             }
 
             35% {
@@ -91,7 +136,47 @@
             }
         }
 
-        @keyframes page-in {}
+        @keyframes page-in {
+            0% {
+                transform: scale(1, 1);
+                opacity: 0;
+            }
+
+            10% {
+                transform: scale(1, 0.002);
+                opacity: 0;
+            }
+
+            35% {
+                transform: scale(0.2, 0.002);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(0.2, 0.002);
+                opacity: 1;
+            }
+
+            85% {
+                transform: scale(1, 0.002);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade_in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
 
         @keyframes burst_in {
 
@@ -99,12 +184,6 @@
             80% {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @for $i from 1 through 17 {
-            .sentence-3 .letter:nth-of-type(#{$i}) {
-                animation-delay: ($i * $i * 0.0035s);
             }
         }
 
@@ -196,10 +275,6 @@
 
 <body>
 
-    <div class="main">
-        <span>Hi!</span>
-    </div>
-
     <div class="intro">
         <div class="sentence">
             <span class="letter">W</span>
@@ -228,6 +303,32 @@
             <span class="letter">E</span>
         </div>
     </div>
+
+    <div class="page home">
+        <div class="objects home">
+            <button class="btn about">ABOUT</button>
+            <button class="btn game">GAME</button>
+            <button class="btn home">HOME</button>
+            <button class="btn song">SONG</button>
+            <button class="btn mbti">MBTI</button>
+        </div>
+    </div>
+
+    <div class="page about">
+        <div class="objects about">
+            <button class="btn about">ABOUT</button>
+            <button class="btn game">GAME</button>
+            <button class="btn home">HOME</button>
+            <button class="btn song">SONG</button>
+            <button class="btn mbti">MBTI</button>
+        </div>
+    </div>
+
+    <script>
+        function startTransition() {
+            document.querySelector('.about').classList.add('active');
+        }
+    </script>
 
 </body>
 
